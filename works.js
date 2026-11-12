@@ -28,7 +28,6 @@ const FALLBACK_WORKS = [
   }
 ];
 
-// ダブルクォーテーション内のカンマに対応したCSV行分割
 function splitCSVLine(line) {
   const result = [];
   let current = "";
@@ -380,7 +379,6 @@ function updateAndDrawGravityTiles() {
     }
   }
 
-  // 波紋エフェクト
   for (let i = gravityRipples.length - 1; i >= 0; i--) {
     const rp = gravityRipples[i];
     rp.r += 3;
@@ -398,7 +396,6 @@ function updateAndDrawGravityTiles() {
   }
   ctx.globalAlpha = 1;
 
-  // タイル描画
   for (const t of gravityTiles) {
     ctx.save();
     ctx.translate(t.x, t.y);
@@ -1146,7 +1143,8 @@ function updateAndDrawPulseHeart() {
   const cy = height / 2;
   const baseRadius = Math.min(width, height) * 0.34;
 
-  heartTime += 0.032;
+  // 半分の短いペース（2倍のテンポ：約1.64秒に1回の鼓動）
+  heartTime += 0.064;
   const beatCycle = heartTime % (Math.PI * 2);
   const lub = Math.pow(Math.max(0, Math.sin(beatCycle)), 16);
   const dub = Math.pow(Math.max(0, Math.sin(beatCycle - 0.55)), 20) * 0.6;
