@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Interactive Works - 作品集</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= ホームページ（作品選択画面） ================= -->
+  <main id="homeView" class="home-view">
+    <div class="home-container">
+      <header class="home-header">
+        <span class="badge">Interactive Web Apps</span>
+        <h1>My Interactive Lab</h1>
+        <p>弾んで、変形し、鼓動する。豊かな3つのインタラクティブ作品</p>
+      </header>
+
+      <!-- works.csv から読み込んだカードがここに自動生成されます -->
+      <section id="worksGrid" class="works-grid" aria-label="作品一覧"></section>
+
+      <footer class="home-footer">
+        <p>PC Mouse &amp; Smartphone Touch Ready / Web Audio &amp; HTML5 Canvas</p>
+      </footer>
+    </div>
+  </main>
+
+  <!-- ================= アプリ実行画面 ================= -->
+  <section id="appView" class="app-view hidden">
+    <canvas id="artCanvas"></canvas>
+
+    <header class="ui-header" id="uiHeader">
+      <div class="title-group">
+        <button id="backHomeBtn" class="btn back-btn">← ホーム</button>
+        <div class="title-box">
+          <h2 id="appTitle">App Title</h2>
+          <p id="appDesc">操作説明</p>
+        </div>
+      </div>
+
+      <!-- Gravity Tiles & Geo Fusion 共通コントロール（日本語） -->
+      <div id="tileControls" class="controls hidden">
+        <div id="statsBadge" class="stats-badge hidden">
+          合体: <strong id="mergeCount">0</strong>回 / 最高Lv.<strong id="maxLevel">1</strong>
+        </div>
+        <button class="btn theme-btn active" data-theme="pop">ポップ</button>
+        <button class="btn theme-btn" data-theme="pastel">パステル</button>
+        <button class="btn theme-btn" data-theme="neon">ネオン</button>
+        <button id="gravityBtn" class="btn accent">重力: ON</button>
+        <button id="tileSoundBtn" class="btn">音: ON</button>
+        <button id="tileClearBtn" class="btn">クリア</button>
+      </div>
+
+      <!-- Pulse & Stitch 用コントロール（英語のみ） -->
+      <div id="pulseControls" class="controls hidden">
+        <div class="stats-badge">
+          Stitches: <strong id="stitchCount">0</strong>
+        </div>
+        <button id="toolModeBtn" class="btn tool-btn sever-active">Mode: SEVER</button>
+        <button id="bgModeBtn" class="btn">Bg: CREAM</button>
+        <button id="pulseSoundBtn" class="btn">Sound: ON</button>
+        <button id="pulseResetBtn" class="btn">Reset</button>
+      </div>
+    </header>
+  </section>
+
+  <script src="works.js"></script>
+</body>
+</html>
